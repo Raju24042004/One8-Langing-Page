@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <title>One8 Sneakers — Rule The Pitch. Own The Drive.</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --turquoise: #14C3D3;
+      --charcoal: #111111;
+      --gold: #CDB052;
+      --gray: #666666;
+      --light-gray: #F5F5F5;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ── Navigation ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 8%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+      transition: box-shadow 0.3s;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(17, 17, 17, 0.08);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--charcoal);
+    }
+
+    .nav-brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-brand span {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--turquoise);
+      color: var(--white) !important;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--charcoal) !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--charcoal);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ── Hero (user-provided) ── */
+    .hero-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 40px 8%;
+      background: url("https://cdn.shopify.com/s/files/1/0692/3514/6912/files/Cover_Drive_Desktop_new_1_6c6ecb15-e406-4e7c-80cc-39e53e1a4568.jpg?v=1783015465&width=1500") center right/cover no-repeat;
+      position: relative;
+    }
+
+    .hero-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .85), rgba(0, 0, 0, .55), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 620px;
+      padding-top: 60px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .hero-description {
+      margin: 20px 0 30px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .tech-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border: 2px solid #fff;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .galaxy-btn {
+      --bg: #0c0c14;
+      padding: 18px 48px;
+      border: none;
+      border-radius: 12px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .galaxy-btn::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      background: conic-gradient(#0c0c14, #8553f4, #3b82f6, #14C3D3, #8553f4, #0c0c14);
+      filter: blur(8px);
+      animation: r 4s linear infinite;
+    }
+
+    .galaxy-btn::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      background: var(--bg);
+      border-radius: 10px;
+    }
+
+    .galaxy-btn__content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .galaxy-btn__stars {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        radial-gradient(circle at 20% 30%, #fff 1px, transparent 2px),
+        radial-gradient(circle at 80% 70%, #fff 1px, transparent 2px);
+    }
+
+    @keyframes r {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .spec-btn {
+      align-items: center;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 0;
+      padding: 1rem;
+    }
+
+    .spec-btn::before {
+      background: #fff;
+      content: "";
+      display: inline-block;
+      height: 1px;
+      margin-right: 10px;
+      transition: all .42s cubic-bezier(.25, .8, .25, 1);
+      width: 0;
+    }
+
+    .spec-btn:hover::before {
+      width: 3rem;
+    }
+
+    /* ── Features Section ── */
+    .features {
+      padding: 100px 8%;
+      background: var(--white);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--turquoise);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 640px;
+      margin-bottom: 60px;
+    }
+
+    /* Technology Grid */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .tech-card {
+      border: 2px solid var(--charcoal);
+      padding: 36px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--turquoise);
+      transition: width 0.3s;
+    }
+
+    .tech-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(17, 17, 17, 0.08);
+    }
+
+    .tech-card:hover::before {
+      width: 100%;
+      opacity: 0.06;
+    }
+
+    .tech-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .tech-card h3 {
+      font-size: 1.15rem;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .tech-card:hover h3 {
+      color: var(--gold);
+    }
+
+    .tech-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .tech-tag-label {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--light-gray);
+      color: var(--charcoal);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .tech-card:hover .tech-tag-label {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    /* ── Feature Highlight Section ── */
+    .feature-highlight-section {
+      padding: 100px 8%;
+      background: var(--white);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    .feature-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 60px;
+      align-items: center;
+    }
+
+    .feature-images-col {
+      grid-column: span 7;
+    }
+
+    .feature-images-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .feature-img-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--charcoal);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .feature-img-wrapper:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .feature-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feature-images-grid .col-1 {
+      grid-column: span 3;
+      height: 180px;
+    }
+
+    .feature-images-grid .col-2 {
+      grid-column: span 3;
+      height: 240px;
+      transform: translateY(-15px);
+    }
+
+    .feature-images-grid .col-3 {
+      grid-column: span 3;
+      height: 280px;
+      transform: translateY(15px);
+    }
+
+    .feature-images-grid .col-4 {
+      grid-column: span 3;
+      height: 200px;
+    }
+
+    .feature-text-col {
+      grid-column: span 5;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .feature-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .feature-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-title-group h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-title-group p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-icon-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(20, 195, 211, 0.1);
+      color: var(--turquoise);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-icon-box svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .feature-item-text {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .feature-item-text strong {
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    @media (max-width: 1024px) {
+      .feature-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .feature-images-col {
+        width: 100%;
+      }
+
+      .feature-text-col {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .feature-images-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .feature-images-grid .col-1,
+      .feature-images-grid .col-2,
+      .feature-images-grid .col-3,
+      .feature-images-grid .col-4 {
+        grid-column: span 1 !important;
+      }
+
+      .feature-images-grid .col-2,
+      .feature-images-grid .col-3 {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .feature-images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .feature-images-grid .col-1,
+      .feature-images-grid .col-2,
+      .feature-images-grid .col-3,
+      .feature-images-grid .col-4 {
+        grid-column: span 1 !important;
+        height: 150px;
+      }
+    }
+
+    /* Product Showcase */
+    .products {
+      padding: 100px 8%;
+      background: var(--light-gray);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    /* ── Tailwind utility mappings for the new design ── */
+    .group {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s ease;
+    }
+
+    .group:hover {
+      transform: translateY(-10px);
+      border-color: var(--turquoise);
+      box-shadow: 0 30px 60px rgba(20, 195, 211, 0.14);
+    }
+
+    .block {
+      display: block;
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .h-full {
+      height: 100%;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .object-cover {
+      object-fit: contain;
+      padding: 32px;
+      background: linear-gradient(135deg, #F8FAFB 0%, #E8F2F4 100%);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .opacity-100 {
+      opacity: 1;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    .bg-white {
+      background-color: var(--white);
+    }
+
+    .pt-3 {
+      padding: 28px 24px;
+      background: var(--white);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .text-sm {
+      font-size: 1.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .text-gray-700 {
+      color: var(--charcoal);
+    }
+
+    .mt-1\.5 {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(17, 17, 17, 0.06);
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .text-gray-900 {
+      color: var(--charcoal);
+    }
+
+    .tracking-wide {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+
+    .group:hover .tracking-wide {
+      color: var(--turquoise);
+    }
+
+    .text-xs {
+      font-size: 0.72rem;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    .h-87\.5 {
+      height: 280px;
+    }
+
+    @media (min-width: 640px) {
+      .sm\:h-112\.5 {
+        height: 320px;
+      }
+    }
+
+    /* Hover States */
+    .group-hover\:opacity-0 {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .group-hover\:opacity-100 {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .group:hover .group-hover\:opacity-0 {
+      opacity: 0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .group:hover .group-hover\:opacity-100 {
+      opacity: 1;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .group:hover .group-hover\:underline {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px) scale(1.06);
+      }
+
+      50% {
+        transform: translateY(-8px) scale(1.06);
+      }
+
+      100% {
+        transform: translateY(0px) scale(1.06);
+      }
+    }
+
+    /* Info Styles */
+    .product-category {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--turquoise);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .product-description {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin: 8px 0 16px;
+      line-height: 1.6;
+    }
+
+    .product-specs {
+      list-style: none;
+      margin-bottom: 8px;
+      padding: 0;
+    }
+
+    .product-specs li {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(17, 17, 17, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--charcoal);
+    }
+
+    .product-specs li:last-child {
+      border-bottom: none;
+    }
+
+    .product-specs li::before {
+      content: "✓";
+      color: var(--turquoise);
+      font-weight: 900;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* Premium Pill Tag Badge in Bottom Row */
+    .mt-1\.5 .text-xs.tracking-wide.uppercase {
+      background: rgba(20, 195, 211, 0.06);
+      color: var(--turquoise);
+      padding: 6px 12px;
+      border-radius: 100px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(20, 195, 211, 0.15);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .group:hover .mt-1\.5 .text-xs.tracking-wide.uppercase {
+      background: var(--turquoise);
+      color: var(--white);
+      border-color: var(--turquoise);
+    }
+
+    /* Performance Breakdown */
+    .performance {
+      padding: 100px 8%;
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .performance .section-label {
+      color: var(--turquoise);
+    }
+
+    .performance .section-title {
+      color: var(--white);
+    }
+
+    .performance .section-subtitle {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .perf-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .perf-item {
+      background: var(--charcoal);
+      padding: 40px 28px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .perf-item:hover {
+      background: rgba(20, 195, 211, 0.12);
+    }
+
+    .perf-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--turquoise);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .perf-item:hover .perf-number {
+      color: var(--gold);
+    }
+
+    .perf-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .perf-desc {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 8px;
+    }
+
+    /* Quote */
+    .quote-section {
+      padding: 80px 8%;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+      color: var(--turquoise);
+      line-height: 1;
+      margin-bottom: -10px;
+    }
+
+    .quote-text {
+      font-size: 1.6rem;
+      font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+      color: var(--charcoal);
+    }
+
+    .quote-author {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+    }
+
+    .quote-author strong {
+      color: var(--gold);
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      padding: 80px 8%;
+      background: var(--turquoise);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 20px,
+          rgba(255, 255, 255, 0.05) 20px,
+          rgba(255, 255, 255, 0.05) 40px);
+    }
+
+    .cta-banner h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cta-banner p {
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--charcoal);
+      color: var(--white);
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      position: relative;
+    }
+
+    .cta-btn:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 48px 8%;
+      background: var(--charcoal);
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand span {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .navbar {
+        padding: 16px 4%;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        background: var(--white);
+        padding: 20px 8%;
+        gap: 16px;
+        border-bottom: 2px solid var(--charcoal);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .perf-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .tech-grid,
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .perf-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-brand span {
+        font-size: 1rem;
+      }
+
+      .navbar {
+        padding: 12px 16px;
+      }
+
+      .nav-links {
+        padding: 16px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a class="nav-brand" href="#">
+      <img src="assets/logo.svg" alt="One8 Sneakers logo" />
+      <span>One8 Sneakers</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#products">Collection</a></li>
+      <li><a href="#performance">Performance</a></li>
+      <li><a class="nav-cta" href="#cta">Shop Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section (user-provided) -->
+  <main class="hero-container" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Rule The Pitch.<br />Own The Drive.</h1>
+      <p class="hero-description">Experience absolute grounding and ultimate power transfer. The all-new <b>one8 Cover
+          Drive 18 X</b>.</p>
+      <div class="tech-tags">
+        <button class="spec-btn" type="button">🌬️ Pro-Vent Upper</button>
+      </div>
+      <button class="galaxy-btn" id="ctaBtn">
+        <span class="galaxy-btn__content">
+          Secure Your Pair
+          <svg fill="currentColor" height="20" viewBox="0 0 24 24" width="20">
+            <path d="M13 14h-2a9 9 0 0 0-8 5A10 10 0 0 1 3 18C3 12.5 7.5 8 13 8V3l10 8-10 8z"></path>
+          </svg>
+        </span>
+        <span class="galaxy-btn__stars"></span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Feature Highlight Section -->
+  <section class="feature-highlight-section" id="features">
+    <div class="feature-container">
+
+      <!-- Images Grid (Left Column) -->
+      <div class="feature-images-col">
+        <div class="feature-images-grid">
+
+          <div class="feature-img-wrapper col-1">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10"
+              alt="Cover Drive 18 X Detail 1">
+          </div>
+
+          <div class="feature-img-wrapper col-2">
+            <img
+              src="https://one8.com/cdn/shop/files/V10018803_03_f7d3ac8c-1a63-46f0-89cc-7d5d714ec713.jpg?v=1781598415"
+              alt="Cover Drive 18 X Detail 2">
+          </div>
+
+          <div class="feature-img-wrapper col-3">
+            <img
+              src="https://one8.com/cdn/shop/files/V10020401_03_96ca3f7e-dfbc-4ac1-a157-e44554056f97.jpg?v=1781599036&width=769"
+              alt="Cover Drive 18 X Detail 3">
+          </div>
+
+          <div class="feature-img-wrapper col-4">
+            <img
+              src="https://one8.com/cdn/shop/files/V10012006_03_bd7675c8-32b3-4f66-ad8c-1b08584e5265.jpg?v=1781597391&width=769"
+              alt="Cover Drive 18 X Detail 4">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Text & Features (Right Column) -->
+      <div class="feature-text-col">
+        <div class="feature-content-wrapper">
+
+          <!-- Title Group -->
+          <div class="feature-title-group">
+            <h2>Engineered to Rule the Pitch and Own the Drive</h2>
+            <p>
+              Experience Virat Kohli's vision of elite athletic performance merged with premium craftsmanship. Designed
+              for the relentless.
+            </p>
+          </div>
+
+          <!-- Feature List -->
+          <ul class="feature-list">
+
+            <li class="feature-item">
+              <span class="feature-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <div class="feature-item-text">
+                <strong>Uncompromised Grounding</strong> – Gold-finished multi-spike configurations engineered for
+                precision batting footwork and crease stability.
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <span class="feature-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <div class="feature-item-text">
+                <strong>Dynamic Energy Return</strong> – Pro-level cushioning foam built to support fast-paced athletic
+                movements.
+              </div>
+            </li>
+
+            <li class="feature-item">
+              <span class="feature-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <div class="feature-item-text">
+                <strong>Premium Heritage Craft</strong> – Signature design details carrying Virat's legacy in every
+                stitch.
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Product Collection -->
+  <section class="products" id="products">
+    <span class="section-label">The Collection</span>
+    <h2 class="section-title">Four Silhouettes.<br />One Legacy.</h2>
+    <p class="section-subtitle">From high-performance batting spikes to cricket-inspired lifestyle sneakers — each pair
+      carries years of experience built into every stitch.</p>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <a href="#" class="group block overflow-hidden">
+        <div class="relative h-87.5 sm:h-112.5">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10"
+            alt="Cover Drive 18 X batting spikes"
+            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10"
+            alt="Cover Drive 18 X batting spikes"
+            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+        </div>
+        <div class="relative bg-white pt-3">
+          <span class="product-category">Men's Lifestyle</span>
+          <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+            Seam XVIII Signature
+          </h3>
+          <p class="product-description">First-ever cricket-inspired lifestyle sneaker. Co-created with Virat Kohli,
+            with a surprise from him inside the box.</p>
+          <ul class="product-specs">
+            <li>Season-ball inspired finish &amp; texture</li>
+            <li>Stitched seam on logo and tongue</li>
+            <li>IMEVA midsole with moulded sockliner</li>
+            <li>Virat's signature on limited edition</li>
+          </ul>
+          <div class="mt-1.5 flex items-center justify-center text-gray-900">
+            <p class="tracking-wide">9,724</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product 2 -->
+      <a href="#" class="group block overflow-hidden">
+        <div class="relative h-87.5 sm:h-112.5">
+          <img
+            src="https://one8.com/cdn/shop/files/Artboard_1_1cda48f0-95f9-4736-ae42-951f3ad019f5.jpg?v=1781969985&width=1500"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Seam XVIII Signature lifestyle sneaker"
+            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+          <img
+            src="https://one8.com/cdn/shop/files/Artboard_1_1cda48f0-95f9-4736-ae42-951f3ad019f5.jpg?v=1781969985&width=1500"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Seam XVIII Signature lifestyle sneaker"
+            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+        </div>
+        <div class="relative bg-white pt-3">
+          <span class="product-category">Men's Cricket</span>
+          <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+            Cover Drive 18 X
+          </h3>
+          <p class="product-description">High-performance batting spikes engineered for total technical command. Built
+            for the IPL. Worn by the best in the world.</p>
+          <ul class="product-specs">
+            <li>Breathable mono mesh upper with synthetic toe overlay</li>
+            <li>Ghillie lacing system for secure fit</li>
+            <li>Perforated forefoot panelling for breathability</li>
+            <li>Gold-finished spike configuration</li>
+          </ul>
+          <div class="mt-1.5 flex items-center justify-center text-gray-900">
+            <p class="tracking-wide">₹12,089</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product 3 -->
+      <a href="#" class="group block overflow-hidden">
+        <div class="relative h-87.5 sm:h-112.5">
+          <img
+            src="https://one8.com/cdn/shop/files/V10020401_03_96ca3f7e-dfbc-4ac1-a157-e44554056f97.jpg?v=1781599036&width=769"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Boom Rush multi-activity trainer"
+            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+          <img
+            src="https://one8.com/cdn/shop/files/V10020401_03_96ca3f7e-dfbc-4ac1-a157-e44554056f97.jpg?v=1781599036&width=769"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Boom Rush multi-activity trainer"
+            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+        </div>
+        <div class="relative bg-white pt-3">
+          <span class="product-category">Men's Lifestyle</span>
+          <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+            Seam XVIII X
+          </h3>
+          <p class="product-description">Multi-activity trainer for running and workouts. Engineered to dominate both —
+            built for the hybrid athlete.</p>
+          <ul class="product-specs">
+            <li>Engineered mesh upper with wider toe box</li>
+            <li>Reflective detail for low-light visibility</li>
+            <li>Boom Foam midsole for energy return</li>
+            <li>Sonic Grip outsole for max control</li>
+          </ul>
+          <div class="mt-1.5 flex items-center justify-center text-gray-900">
+            <p class="tracking-wide">6,990</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Product 4 -->
+      <a href="#" class="group block overflow-hidden">
+        <div class="relative h-87.5 sm:h-112.5">
+          <img
+            src="https://one8.com/cdn/shop/files/V10012006_03_bd7675c8-32b3-4f66-ad8c-1b08584e5265.jpg?v=1781597391&width=769"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Seam XVIII X heritage sneaker"
+            class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" />
+          <img
+            src="https://one8.com/cdn/shop/files/V10012006_03_bd7675c8-32b3-4f66-ad8c-1b08584e5265.jpg?v=1781597391&width=769"
+            onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnIURyk7XNVqJ8HXujMQaGreLNtDKtGxcgiyW1ZPhka1LF0h9wEuDBktmn&s=10'"
+            alt="Seam XVIII X heritage sneaker"
+            class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" />
+        </div>
+        <div class="relative bg-white pt-3">
+          <span class="product-category">Men's Running/Gym</span>
+          <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+            Boom Rush.
+          </h3>
+          <p class="product-description">Built from the era that changed the game. Low-slung, toe-capped silhouette of
+            the 1970s and 80s — heritage reimagined.</p>
+          <ul class="product-specs">
+            <li>Premium textured upper that ages beautifully</li>
+            <li>Classic toe-cap from vintage cricket shoes</li>
+            <li>Stitched seam carrying cricket-led DNA</li>
+            <li>All-day IMEVA comfort</li>
+          </ul>
+          <div class="mt-1.5 flex items-center justify-center text-gray-900">
+            <p class="tracking-wide">₹9,764</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Performance Stats -->
+  <section class="performance" id="performance">
+    <span class="section-label">Built to Perform</span>
+    <h2 class="section-title">Numbers That<br />Define Excellence</h2>
+    <p class="section-subtitle">Every gold-finished spike, every engineered detail — for the athlete who doesn't wait
+      for the game to come to them.</p>
+
+    <div class="perf-grid">
+      <div class="perf-item">
+        <div class="perf-number">11</div>
+        <div class="perf-label">Spike Configuration</div>
+        <div class="perf-desc">7 forefoot + 4 convertible heel</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-number">6</div>
+        <div class="perf-label">Row Seam Stitch</div>
+        <div class="perf-desc">Match-day ball construction</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-number">14</div>
+        <div class="perf-label">Day Free Returns</div>
+        <div class="perf-desc">Don't love it, we'll refund you</div>
+      </div>
+      <div class="perf-item">
+        <div class="perf-number">2–4</div>
+        <div class="perf-label">Day Delivery</div>
+        <div class="perf-desc">Pan-India express shipping</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Virat Kohli Quote -->
+  <section class="quote-section">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">Building my own shoe is something I've wanted since I was a kid. It's a small dream come true.
+    </p>
+    <p class="quote-author">— <strong>Virat Kohli</strong>, Co-Creator</p>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner" id="cta">
+    <h2>Command the Crease</h2>
+    <p>Precision under pressure. Engineered for breakthrough performance.</p>
+    <button class="cta-btn" id="ctaBannerBtn">
+      Secure Your Pair
+      <svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18">
+        <path d="M13 14h-2a9 9 0 0 0-8 5A10 10 0 0 1 3 18C3 12.5 7.5 8 13 8V3l10 8-10 8z"></path>
+      </svg>
+    </button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="One8" />
+      <span>One8 Sneakers</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#products">Collection</a></li>
+      <li><a href="#performance">Performance</a></li>
+      <li><a href="#cta">Shop</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 One8 Sneakers. Co-created with Virat Kohli. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("ctaBtn").onclick = () =>
+      alert("Redirecting to secure processing checkout gateway...");
+
+    document.getElementById("ctaBannerBtn").onclick = () =>
+      alert("Redirecting to secure processing checkout gateway...");
+
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 40);
+    });
+
+    document.getElementById("navToggle").onclick = () => {
+      document.getElementById("navLinks").classList.toggle("open");
+    };
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("open");
+      });
+    });
+  </script>
+</body>
+
+</html>
